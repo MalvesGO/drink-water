@@ -1,5 +1,6 @@
 import { HStack, Text, Button, useToast, Box, VStack, Stack } from 'native-base'
 import React, { useEffect, useState } from 'react'
+import { UserContext } from '../contexts/UserContext';
 
 interface iDashboardProps {
 
@@ -7,10 +8,11 @@ interface iDashboardProps {
 
 export const Dashboard = (props: iDashboardProps) => {
 
+    const { goal } = React.useContext(UserContext);
+
     const toast = useToast();
     const [cupSize, setCupSize] = useState<number>(300);
     const [water, setWater] = useState<number>(0);
-    const [goal, setGoal] = useState<number>(2000);
 
     const handleWater = () => {
         setWater(water + cupSize);
@@ -48,7 +50,7 @@ export const Dashboard = (props: iDashboardProps) => {
                             {water}
                         </Text>
                         <Text fontSize="xl">
-                            {' '}/ {goal} ml
+                            0 {' '}/ {goal} ml
                         </Text>
                     </Stack>
 
